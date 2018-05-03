@@ -1,10 +1,19 @@
-import { major } from 'semver';
-import { name, version } from '../package.json';
-import { createHash } from 'crypto';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MAGIC_VALUE = exports.MAGIC_KEY = exports.SHA = undefined;
+
+var _semver = require('semver');
+
+var _package = require('../package.json');
+
+var _crypto = require('crypto');
 
 // function to use for creating hashes
-export const SHA = 'sha1';
+var SHA = exports.SHA = 'sha1';
 // name of coverage data magic key
-export const MAGIC_KEY = '_coverageSchema';
+var MAGIC_KEY = exports.MAGIC_KEY = '_coverageSchema';
 // name of coverage data magic value
-export const MAGIC_VALUE = createHash(SHA).update(name + '@' + major(version)).digest('hex');
+var MAGIC_VALUE = exports.MAGIC_VALUE = (0, _crypto.createHash)(SHA).update(_package.name + '@' + (0, _semver.major)(_package.version)).digest('hex');
